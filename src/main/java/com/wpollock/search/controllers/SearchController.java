@@ -35,8 +35,9 @@ public class SearchController {
     @PostMapping("/")
     public String search(@ModelAttribute("FormData") FormData data) {
         log.debug("Search form submitted");
-        // clear search results from model.
-        log.error("Search Terms: " + data.getSearchTerms());
+        // TODO: Clear search results from model.
+        log.error(String.format( "Search Type: %s, Search Terms: %s",
+                data.getSearchType(), data.getSearchTerms()));
 
         return "home"; // Name of view
     }

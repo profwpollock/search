@@ -10,7 +10,7 @@ public class InvertedIndex {
     private static Map<String, SortedSet<DocPos>> invertedIndex = new HashMap<>();
 
     public void loadIndex(String indexJSON) {
-
+        // TODO
     }
 
     public String exportIndex() {
