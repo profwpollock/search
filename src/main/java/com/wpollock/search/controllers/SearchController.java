@@ -25,7 +25,7 @@ public class SearchController {
      *
      * @return The view name
      */
-    @GetMapping("/")
+    @GetMapping({"/", "/home"})
     public String home(Model model) {
         log.debug("Home controller invoked");
         model.addAttribute("FormData", new FormData());

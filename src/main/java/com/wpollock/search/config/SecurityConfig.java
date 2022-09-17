@@ -1,6 +1,7 @@
 package com.wpollock.search.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -22,6 +23,7 @@ import org.springframework.security.web.SecurityFilterChain;
  * and password are hard-coded. BAD IDEA IN THE REAL WORLD!
  */
 
+@Configuration
 @EnableWebSecurity
 public class SecurityConfig {
  
@@ -29,13 +31,16 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
           .authorizeHttpRequests( authz -> authz
-              .antMatchers("/").hasRole("USER")
-              .antMatchers("/admin/**").hasRole("ADMIN")
+              .antMatchers("/", "/home").permitAll()
+              .antMatchers("/maint/**").hasRole("ADMIN")
           )
-          .formLogin((formLogin) -> formLogin
+          .formLogin((form) -> form
               .loginPage("/login")
-              .failureUrl("/login")
+              .permitAll()
  
+          )
+          .logout(logout -> logout
+                  .logoutSuccessUrl("/")
           );
     
       return http.build();

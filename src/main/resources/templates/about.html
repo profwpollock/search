@@ -7,8 +7,12 @@
 <style type="text/css">
 #title { text-align: center }
 #logo { float:left }
-#info { float:left; margin-left:3em }
-#footer {clear:both; text-align: center }
+#info { float:left; margin-left:4rem }
+#footer { clear:both; display: grid; grid-template-columns: auto auto auto;
+          width:100% }
+#footer > div { text-align: center; padding: 20px 0 }
+#disclaimer { grid-column: 1 / 2 }
+#home { grid-column: 3 / 3 }
 </style>
 </head>
 <body>
@@ -25,7 +29,8 @@
 </div>
 
 <div id="footer">
-<p>Spring 6 version of Search Engine Model Solution</p>
+    <p>Spring 6 version of Search Engine Model Solution</p>
+    <div id="home"><a href="/" th:href="@{/}">Home</a></div>
 </div>
 </body>
 </html>
